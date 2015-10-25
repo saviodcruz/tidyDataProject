@@ -73,11 +73,18 @@ The R script run_analysis() does the following:
 The code for run_analysis.R performs the following:
 
 .Requires 'reshape2' package.
+
 .Loads the features and activity labels.
+
 .Loads the test and train datasets.
+
 .Labels the variables and adds additional columns for subject id and activity labels.
+
 .Extracts the mean and standard deviation column names from the datasets along with the subject id and       activity labels columns.
+
 .Merges the test and train dataframes.
+
 .Reshapes the dataframe.
+
 .Writes the dataframe to a text file.
 
