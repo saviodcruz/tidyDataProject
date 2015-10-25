@@ -31,11 +31,11 @@ std = grep("std()",names(x))
 z = append(mean, std, length(mean))
 Extracted_DF = x[,z]
 
-Activity_Label = activity_labels$V2[y[,1]]
+activitylabel = activity_labels$V2[y[,1]]
 
-dataFrame = cbind(Activity_Label, Extracted_DF)
+dataFrame = cbind(activitylabel, Extracted_DF)
 
-names(subject) = "Subject_ID"
+names(subject) = "subject"
 
 dataFrame = cbind(subject,dataFrame)
 
@@ -53,11 +53,11 @@ mergedDataFrame = rbind(train,test)
 
 # The melt function in the 'reshape2' package is used to create the melted dataframe 'dfMelt'.
 
-dfMelt = melt(mergedDataFrame, id =c("Subject_ID", "Activity_Label") , measure.vars = names(mergedDataFrame)[3:68])
+dfMelt = melt(mergedDataFrame, id =c("subject", "activitylabel") , measure.vars = names(mergedDataFrame)[3:68])
 
 # The dcast function in the 'reshape2' package is used to find the mean of the variables for each subject and activity label.
 
-finalDataFrame = dcast(dfMelt, Subject_ID + Activity_Label ~ variable, mean)
+finalDataFrame = dcast(dfMelt, subject + activitylabel ~ variable, mean)
 
 # The cleaned dataframe is written to the file 'tidy_data.txt'.
 
